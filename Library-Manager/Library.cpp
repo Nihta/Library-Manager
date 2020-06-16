@@ -207,7 +207,7 @@ void Library::bookManagement() {
 				{
 					cout << line << "|" << setw(5) << "Stt" << " |" << setw(8) << "Ma so" << " |" << setw(28) << "Ten" << " |" << setw(22) << "The loai" << " |" << setw(22) << "Tac gia" << " |" << setw(22) << "Nha xuat ban" << " |" << setw(15) << "Nam Xuat ban" << " |" << setw(12) << "So trang" << " |" << setw(12) << "So luong" << " |" << "\n" << line2;
 					cout << "|" << setw(5) << 1 << " |";
-					this->listReaders[index]->display();
+					this->listBooks[index]->display();
 					cout << line;
 				}
 				getchar();
