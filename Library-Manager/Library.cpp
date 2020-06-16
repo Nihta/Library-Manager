@@ -151,13 +151,15 @@ void Library::bookManagement() {
 	while (!isExit)
 	{
 		system("cls");
-		cout << "----------- Menu -----------\n"
-			<< "1. Tim sach\n"
-			<< "2. Them sach\n"
-			<< "3. Xoa sach\n"
-			<< "4. Sua thong tin sach\n"
-			<< "5. Hien thi toan bo sach\n"
-			<< "0. Quay lai\n";
+		cout << "+------- Quan ly sach ------+\n"
+			<<  "| 1. Tim sach               |\n"
+			<<  "| 2. Them sach              |\n"
+			<<  "| 3. Xoa sach               |\n"
+			<<  "| 4. Sua thong tin sach     |\n"
+			<<  "| 5. Hien thi toan bo sach  |\n"
+			<<  "| 0. Quay lai               |\n"
+			 << "+---------------------------+\n";
+
 		int option;
 		cin >> option;
 		cin.ignore();
@@ -167,9 +169,11 @@ void Library::bookManagement() {
 		case 1:
 		{
 			system("cls");
-			cout << "---------- Chon cach tim kiem ---------\n"
-				<< "1. Tim theo ma sach\n"
-				<< "2. Tim theo ten sach\n";
+			cout << "+------ Chon cach tim kiem -----+\n"
+				<<  "| 1. Tim theo ma sach           |\n"
+				<<  "| 2. Tim theo ten sach          |\n"
+				<<  "+-------------------------------+\n";
+
 			int option;
 			cin >> option;
 			cin.ignore();
@@ -186,7 +190,7 @@ void Library::bookManagement() {
 				{
 					cout << line << "|" << setw(5) << "Stt" << " |" << setw(8) << "Ma so" << " |" << setw(28) << "Ten" << " |" << setw(22) << "The loai" << " |" << setw(22) << "Tac gia" << " |" << setw(22) << "Nha xuat ban" << " |" << setw(15) << "Nam Xuat ban" << " |" << setw(12) << "So trang" << " |" << setw(12) << "So luong" << " |" << "\n" << line2;
 					cout << "|" << setw(5) << 1 << " |";
-					this->listReaders[index]->display();
+					this->listBooks[index]->display();
 					cout << line;
 				}
 				getchar();
@@ -212,8 +216,8 @@ void Library::bookManagement() {
 		break;
 		case 2:
 			system("cls");
-			this->listReaders.push_back(new Readers());
-			this->writeDataReadersToFile();
+			this->listBooks.push_back(new Book());
+			this->writeDataBookToFile();
 			system("cls");
 			cout << "Them thanh cong!" << endl;
 			getchar();
@@ -223,14 +227,14 @@ void Library::bookManagement() {
 			cout << "Nhap ma so sach can xoa: ";
 			string id;
 			getline(cin, id);
-			int index = this->findIndexReaders('i', id, 0);
+			int index = this->findIndexBook('i', id);
 			system("cls");
 			if (index == -1) {
 				cout << "Ma so sach khong dung!" << endl;
 			}
 			else {
-				this->listReaders.erase(this->listReaders.begin() + index);
-				this->writeDataReadersToFile();
+				this->listBooks.erase(this->listBooks.begin() + index);
+				this->writeDataBookToFile();
 				cout << "Xoa thanh cong!" << endl;
 			}
 			getchar();
@@ -241,15 +245,15 @@ void Library::bookManagement() {
 			cout << "Nhap ma so sach can sua thong tin: ";
 			string id;
 			getline(cin, id);
-			int index = this->findIndexReaders('i', id, 0);
+			int index = this->findIndexBook('i', id);
 			system("cls");
 			if (index == -1) {
 				cout << "Ma so sach khong dung!" << endl;
 			}
 			else {
 				cout << "Nhap thong tin moi cho sach co ma so " << id << ":" << endl;
-				*this->listReaders[index] = Readers();
-				this->writeDataReadersToFile();
+				*this->listBooks[index] = Book();
+				this->writeDataBookToFile();
 				system("cls");
 				cout << "Sua thanh cong!" << endl;
 			}
@@ -295,13 +299,14 @@ void Library::readersManagement() {
 			+ string(14, '-') + "-+"
 			+ string(40, '-') + "-|" + "\n";
 		system("cls");
-		cout << "----------- Menu -----------\n"
-			<< "1. Tim doc gia\n"
-			<< "2. Them doc gia\n"
-			<< "3. Xoa doc gia\n"
-			<< "4. Sua thong tin doc gia\n"
-			<< "5. Hien thi toan bo doc gia\n"
-			<< "0. Quay lai\n";
+		cout << "+-------- Quan ly doc gia --------+\n"
+			<<  "| 1. Tim doc gia                  |\n"
+			<<  "| 2. Them doc gia                 |\n"
+			<<  "| 3. Xoa doc gia                  |\n"
+			<<  "| 4. Sua thong tin doc gia        |\n"
+			<<  "| 5. Hien thi toan bo doc gia     |\n"
+			<<  "| 0. Quay lai                     |\n" 
+			<<  "+---------------------------------+\n";
 		int option;
 		cin >> option;
 		cin.ignore();
@@ -310,9 +315,11 @@ void Library::readersManagement() {
 		{
 		case 1:
 		{
-			cout << "---------- Chon cach tim kiem ---------\n"
-				<< "1. Tim theo ma doc gia\n"
-				<< "2. Tim theo ten doc gia\n";
+			cout << "+------ Chon cach tim kiem -----+\n"
+				<<  "| 1. Tim theo ma doc gia        |\n"
+				<<  "| 2. Tim theo ten doc gia       |\n"
+				<<  "+-------------------------------+\n";
+
 			int option;
 			cin >> option;
 			cin.ignore();
@@ -501,13 +508,14 @@ void Library::menu() {
 	while (!exit)
 	{
 		system("cls");
-		cout << "------------ Menu ----------\n"
-			<< "1. Muon sach\n"
-			<< "2. Tra sach\n"
-			<< "3. Danh sach nguoi muon sach\n"
-			<< "4. Quan ly sach\n"
-			<< "5. Quan ly doc gia\n"
-			<< "0. Thoat\n";
+		cout << "+-------- Quan ly thu vien -------+\n"
+			 << "| 1. Muon sach                    |\n"
+			 << "| 2. Tra sach                     |\n"
+			 << "| 3. Danh sach nguoi muon sach    |\n"
+			 << "| 4. Quan ly sach                 |\n"
+			 << "| 5. Quan ly doc gia              |\n"
+		     << "| 0. Thoat                        |\n"
+			 << "+---------------------------------+\n";
 
 		int option;
 		cin >> option;
