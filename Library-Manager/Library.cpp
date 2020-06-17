@@ -235,9 +235,21 @@ void Library::bookManagement() {
 				cout << "Ma so sach khong dung!" << endl;
 			}
 			else {
-				this->listBooks.erase(this->listBooks.begin() + index);
-				this->writeDataBookToFile();
-				cout << "Xoa thanh cong!" << endl;
+				// Kiểm tra xem sách này có ai đang mượn không (true là không có ai mượn)
+				bool check = true;
+				for (auto bB : this->listBorrowBooks) {
+					if (bB->getIdBook() == id) {
+						check = false;
+						break;
+					}
+				}
+				if (check) {
+					this->listBooks.erase(this->listBooks.begin() + index);
+					this->writeDataBookToFile();
+					cout << "Xoa thanh cong!" << endl;
+				} else{
+					cout << "Khong the xoa sach khi dang co nguoi muon!" << endl;
+				}
 			}
 			getchar();
 		}
@@ -405,9 +417,22 @@ void Library::readersManagement() {
 				cout << "Ma so doc gia khong dung!" << endl;
 			}
 			else {
-				this->listReaders.erase(this->listReaders.begin() + index);
-				this->writeDataReadersToFile();
-				cout << "Xoa thanh cong!" << endl;
+				// Kiểm tra xem độc giả này xem có đang mượn sách hay không (true nếu không)
+				bool check = true;
+				for (auto bB : this->listBorrowBooks) {
+					if (bB->getIdReaders() == id) {
+						check = false;
+						break;
+					}
+				}
+				if (check) {
+					this->listReaders.erase(this->listReaders.begin() + index);
+					this->writeDataReadersToFile();
+					cout << "Xoa thanh cong!" << endl;
+				}
+				else {
+					cout << "Khong the xoa doc gia dang muon sach" << endl;
+				}
 			}
 			getchar();
 		}
