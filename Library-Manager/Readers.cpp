@@ -41,10 +41,27 @@ void Readers::display() {
 string Readers::getId() {
 	return this->id;
 }
+
 string Readers::getName() {
 	return this->name;
 }
 
+void Readers::edit() {
+	string newData;
+	cout << "Nhap thong tin moi cho doc gia, neu khong thay doi thi bo trong: " << endl;
+	
+	cout << "\tNhap ten doc gia: ";
+	getline(cin, newData);
+	if (newData != "") this->name = newData;
+
+	cout << "\tNhap so dien thoai lien lac: ";
+	getline(cin, newData);
+	if (newData != "") this->phone = newData;
+
+	cout << "\tNhap dia chi: ";
+	getline(cin, newData);
+	if (newData != "") this->address = newData;
+}
 
 Readers::~Readers() {
 

@@ -10,8 +10,11 @@
 class Library
 {
 private:
+	// Danh sách các cuốn sách trong thư viện
 	vector<Book*> listBooks;
+	// Danh sách các độc giả
 	vector<Readers*> listReaders;
+	// Danh sách mượn sách
 	vector<BorrowBook*> listBorrowBooks;
 public:
 	Library();
@@ -34,10 +37,13 @@ public:
 	// Tìm chỉ số của sách theo mã số hoặc tên sách
 	// mode: 'i' là tìm theo mã sách, 'n' tìm theo tên sách
 	int findIndexBook(char mode, string data);
+	// Tìm chỉ số của sách theo mã số hoặc tên độc giả
+	// mode: 'i' là tìm theo mã độc giả, 'n' tìm theo tên độc giả
 	// start là vị trí bắt đầu tìm kiếm
 	int findIndexReaders(char mode, string data, unsigned int start);
 	// Mượn sách
 	void borrowBook();
+	// Menu chính
 	void menu();
 };
 

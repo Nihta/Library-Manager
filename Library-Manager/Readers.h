@@ -24,8 +24,12 @@ public:
 	void writeDataToFile(fstream& file);
 	// Hiện thị thông tin độc giả
 	void display();
+	// Lấy tên độc giả
 	string getName();
+	// Lấy tên độc giả
 	string getId();
+	// Sửa thông tin độc giả
+	void edit();
 	~Readers();
 };
 

@@ -166,7 +166,7 @@ void Library::bookManagement() {
 		system("cls");
 		switch (option)
 		{
-		case 1:
+		case 1: // Tìm sách
 		{
 			system("cls");
 			cout << "+------ Chon cach tim kiem -----+\n"
@@ -214,15 +214,17 @@ void Library::bookManagement() {
 			}
 		}
 		break;
-		case 2:
+		case 2: // Thêm sách
+		{
 			system("cls");
 			this->listBooks.push_back(new Book());
 			this->writeDataBookToFile();
 			system("cls");
 			cout << "Them thanh cong!" << endl;
 			getchar();
+		}
 			break;
-		case 3:
+		case 3: // Xóa sách
 		{
 			cout << "Nhap ma so sach can xoa: ";
 			string id;
@@ -240,7 +242,7 @@ void Library::bookManagement() {
 			getchar();
 		}
 		break;
-		case 4:
+		case 4: // Sửa thông tin sách
 		{
 			cout << "Nhap ma so sach can sua thong tin: ";
 			string id;
@@ -251,8 +253,8 @@ void Library::bookManagement() {
 				cout << "Ma so sach khong dung!" << endl;
 			}
 			else {
-				cout << "Nhap thong tin moi cho sach co ma so " << id << ":" << endl;
-				*this->listBooks[index] = Book();
+				system("cls");
+				this->listBooks[index]->edit();
 				this->writeDataBookToFile();
 				system("cls");
 				cout << "Sua thanh cong!" << endl;
@@ -260,7 +262,7 @@ void Library::bookManagement() {
 			getchar();
 		}
 		break;
-		case 5:
+		case 5: // Hiện thị
 		{
 			system("cls");
 			cout << line
@@ -313,7 +315,7 @@ void Library::readersManagement() {
 		system("cls");
 		switch (option)
 		{
-		case 1:
+		case 1: // Tìm độc giả
 		{
 			cout << "+------ Chon cach tim kiem -----+\n"
 				<<  "| 1. Tim theo ma doc gia        |\n"
@@ -383,7 +385,7 @@ void Library::readersManagement() {
 			}
 		}
 		break;
-		case 2:
+		case 2: // Thêm độc giả
 		{
 			this->listReaders.push_back(new Readers());
 			this->writeDataReadersToFile();
@@ -392,8 +394,7 @@ void Library::readersManagement() {
 			getchar();
 		}
 		break;
-
-		case 3:
+		case 3: // Xóa độc giả
 		{
 			cout << "Nhap ma so doc gia can xoa: ";
 			string id;
@@ -411,7 +412,7 @@ void Library::readersManagement() {
 			getchar();
 		}
 		break;
-		case 4:
+		case 4: // Sửa thông tin độc giả
 		{
 			cout << "Nhap ma so doc gia can sua thong tin: ";
 			string id;
@@ -422,8 +423,7 @@ void Library::readersManagement() {
 				cout << "Ma doc gia khong dung!" << endl;
 			}
 			else {
-				cout << "Nhap thong tin moi cho sach co ma so " << id << ":" << endl;
-				*this->listReaders[index] = Readers();
+				this->listReaders[index]->edit();
 				this->writeDataReadersToFile();
 				system("cls");
 				cout << "Sua thanh cong!" << endl;
@@ -431,7 +431,7 @@ void Library::readersManagement() {
 			getchar();
 		}
 		break;
-		case 5:
+		case 5: // Hiện thị danh sách các độc giả
 		{
 			system("cls");
 			cout << line

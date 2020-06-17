@@ -95,4 +95,39 @@ void Book::changeReadersBorrowBook(char mode) {
     }
 }
 
+void Book::edit() {
+    string dataNewStr;
+    string dataNewUInt;
+    cout << "Nhap thong tin moi cho sach, bo trong neu nhu khong muon thay doi:" << endl;
+
+    cout << "\tNhap ten sach moi: ";
+    getline(cin, dataNewStr);
+    if (dataNewStr != "") this->name = dataNewStr;
+
+    cout << "\tNhap the loai sach moi: ";
+    getline(cin, dataNewStr);
+    if (dataNewStr != "") this->category = dataNewStr;
+
+    cout << "\tNhap so trang moi: ";
+    getline(cin, dataNewStr);
+    if (dataNewStr != "") this->numOfPage = stoi(dataNewStr);
+
+    cout << "\tNhap ten tac gia moi: ";
+    getline(cin, dataNewStr);
+    if (dataNewStr != "") this->author = dataNewStr;
+
+    cout << "\tNhap ten nha xuat ban moi: ";
+    getline(cin, dataNewStr);
+    if (dataNewStr != "") this->publisher = dataNewStr;
+
+    cout << "\tNhap thoi gian xuat ban moi (dd/mm/yyyy): ";
+    string tmp;
+    getline(cin, tmp);
+    if (tmp != "") this->publishingTime = Date(tmp);
+
+    cout << "\tNhap so luong sach moi: ";
+    getline(cin, dataNewStr);
+    if (dataNewStr != "") this->numOfBook = stoi(dataNewStr);
+}
+
 Book::~Book() {}

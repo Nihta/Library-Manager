@@ -8,7 +8,7 @@ class BorrowBook
 private:
 	// Mã số người mượn
 	string idReaders;
-	// Mã số sách
+	// Mã số sách mượn
 	string idBook;
 	// Ngày mượn
 	Date borrowDate = Date();

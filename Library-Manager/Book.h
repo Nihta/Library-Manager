@@ -43,5 +43,7 @@ public:
     unsigned int getNumOfBookCur();
     // mode: 't' tăng số lượng sách đang được mượn lên 1, 'g' giảm đi 1
     void changeReadersBorrowBook(char mode);
+    // Sửa thông tin
+    void edit();
     ~Book();
 };
